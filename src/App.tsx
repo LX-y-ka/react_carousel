@@ -55,7 +55,7 @@ class App extends React.Component<{}, State> {
         {/* eslint-disable-next-line */}
         <h1 className="App__title" data-cy="title">Carousel with {this.state.images.length} images</h1>
 
-        <form className="App__from" onSubmit={e => e.preventDefault()}>
+        <form className="App__form" onSubmit={e => e.preventDefault()}>
           <div className="App__input input App__input--itwidth">
             <label className="input__label" htmlFor="itemId">
               Item width:

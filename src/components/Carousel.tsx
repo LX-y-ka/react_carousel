@@ -80,6 +80,9 @@ const Carousel: React.FC<Props> = ({
 
   useEffect(() => {
     const list = listRef.current as HTMLUListElement;
+    const nextBtn = document.querySelector(
+      '[data-cy="next"]',
+    ) as HTMLButtonElement;
 
     if (!list) {
       return;
@@ -87,6 +90,13 @@ const Carousel: React.FC<Props> = ({
 
     list.style.transform = `translateX(-${currentIndex * (itemWidth + gap)}px)`;
     list.style.transition = `transform ${animationDuration}ms linear`;
+
+    if (
+      !infinite &&
+      currentIndex === imagesPrep.length - (imagesPrep.length % frameSize)
+    ) {
+      nextBtn.disabled = true;
+    }
   }, [currentIndex, animationDuration, itemWidth]);
 
   return (
@@ -145,12 +155,6 @@ const Carousel: React.FC<Props> = ({
         onClick={() => {
           moveRight();
         }}
-        disabled={
-          currentIndex ===
-            imagesPrep.length - (imagesPrep.length % frameSize) && !infinite
-            ? true
-            : false
-        }
       ></button>
     </div>
   );
