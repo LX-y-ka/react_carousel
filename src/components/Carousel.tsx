@@ -97,7 +97,14 @@ const Carousel: React.FC<Props> = ({
     ) {
       nextBtn.disabled = true;
     }
-  }, [currentIndex, animationDuration, itemWidth]);
+  }, [
+    currentIndex,
+    animationDuration,
+    itemWidth,
+    infinite,
+    frameSize,
+    imagesPrep,
+  ]);
 
   return (
     <div className="Carousel">
